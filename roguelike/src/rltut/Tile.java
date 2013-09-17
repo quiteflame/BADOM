@@ -4,7 +4,8 @@ import java.awt.Color;
 import asciiPanel.AsciiPanel;
 
 public enum Tile {
-	FLOOR((char)250, AsciiPanel.yellow, "A dirt and rock cave floor."),
+	CAVE_FLOOR((char)250, AsciiPanel.yellow, "A dirt and rock cave floor."),
+	DUNGEON_FLOOR((char)250, AsciiPanel.yellow, "A stone dungeon floor."),
 	CAVE_WALL('#', AsciiPanel.yellow, "A dirt and rock cave wall."),
 	DUNGEON_WALL((char)177, AsciiPanel.yellow, "A solid dungeon wall."),
 	BOUNDS('x', AsciiPanel.brightBlack, "Beyond the edge of the world."),

@@ -39,7 +39,7 @@ public class DungeonBuilder {
 			x = (int)(Math.random() * width);
 			y = (int)(Math.random() * height);
 		}
-		while (tiles[x][y][0] != Tile.FLOOR);
+		while (tiles[x][y][0] != Tile.DUNGEON_FLOOR);
 		
 		tiles[x][y][0] = Tile.STAIRS_UP;
 		return this;
@@ -82,7 +82,7 @@ public class DungeonBuilder {
 	    for(int x = room.x1 + 1; x < room.x2; x++){
 	        for(int y = room.y1 + 1; y < room.y2; y++){
 	        	for(int z = 0; z < depth; z++){
-	        		tiles[x][y][z] = Tile.FLOOR;
+	        		tiles[x][y][z] = Tile.DUNGEON_FLOOR;
 	        	}
 	        }
 	    }
@@ -92,7 +92,7 @@ public class DungeonBuilder {
 	    //horizontal tunnel. min() and max() are used in case x1>x2
 	    for(int x = Math.min(x1, x2); x < Math.max(x1, x2) + 1; x++){
 	    	for(int z = 0; z < depth; z++){
-        		tiles[x][y][z] = Tile.FLOOR;
+        		tiles[x][y][z] = Tile.DUNGEON_FLOOR;
         	}
 	    }
 	}
@@ -101,7 +101,7 @@ public class DungeonBuilder {
 	    //vertical tunnel
 	    for(int y = Math.min(y1, y2); y < Math.max(y1, y2) + 1; y++){
 	    	for(int z = 0; z < depth; z++){
-        		tiles[x][y][z] = Tile.FLOOR;
+        		tiles[x][y][z] = Tile.DUNGEON_FLOOR;
         	}
 	    }
 	}
@@ -234,8 +234,8 @@ public class DungeonBuilder {
 		for (int x = 0; x < width; x++){
 			for (int y = 0; y < height; y++){
 				int r = regions[x][y][z] * 1000 + regions[x][y][z+1];
-				if (tiles[x][y][z] == Tile.FLOOR
-						&& tiles[x][y][z+1] == Tile.FLOOR
+				if (tiles[x][y][z] == Tile.DUNGEON_FLOOR
+						&& tiles[x][y][z+1] == Tile.DUNGEON_FLOOR
 						&& !connected.contains(r)){
 					connected.add(r);
 					connectRegionsDown(z, regions[x][y][z], regions[x][y][z+1]);
@@ -262,8 +262,8 @@ public class DungeonBuilder {
 		
 		for (int x = 0; x < width; x++){
 			for (int y = 0; y < height; y++){
-				if (tiles[x][y][z] == Tile.FLOOR
-						&& tiles[x][y][z+1] == Tile.FLOOR
+				if (tiles[x][y][z] == Tile.DUNGEON_FLOOR
+						&& tiles[x][y][z+1] == Tile.DUNGEON_FLOOR
 						&& regions[x][y][z] == r1 
 						&& regions[x][y][z+1] == r2){
 					candidates.add(new Point(x,y,z));

@@ -29,7 +29,7 @@ public class CaveBuilder {
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
 				for (int z = 0; z < depth; z++) {
-					tiles[x][y][z] = Math.random() < 0.5 ? Tile.FLOOR : Tile.CAVE_WALL;
+					tiles[x][y][z] = Math.random() < 0.5 ? Tile.CAVE_FLOOR : Tile.CAVE_WALL;
 				}
 			}
 		}
@@ -52,13 +52,13 @@ public class CaveBuilder {
 										|| y + oy >= height)
 									continue;
 	
-								if (tiles[x + ox][y + oy][z] == Tile.FLOOR)
+								if (tiles[x + ox][y + oy][z] == Tile.CAVE_FLOOR)
 									floors++;
 								else
 									rocks++;
 							}
 						}
-						tiles2[x][y][z] = floors >= rocks ? Tile.FLOOR : Tile.CAVE_WALL;
+						tiles2[x][y][z] = floors >= rocks ? Tile.CAVE_FLOOR : Tile.CAVE_WALL;
 					}
 				}
 			}
@@ -134,8 +134,8 @@ public class CaveBuilder {
 		for (int x = 0; x < width; x++){
 			for (int y = 0; y < height; y++){
 				int r = regions[x][y][z] * 1000 + regions[x][y][z+1];
-				if (tiles[x][y][z] == Tile.FLOOR
-						&& tiles[x][y][z+1] == Tile.FLOOR
+				if (tiles[x][y][z] == Tile.CAVE_FLOOR
+						&& tiles[x][y][z+1] == Tile.CAVE_FLOOR
 						&& !connected.contains(r)){
 					connected.add(r);
 					connectRegionsDown(z, regions[x][y][z], regions[x][y][z+1]);
@@ -162,8 +162,8 @@ public class CaveBuilder {
 		
 		for (int x = 0; x < width; x++){
 			for (int y = 0; y < height; y++){
-				if (tiles[x][y][z] == Tile.FLOOR
-						&& tiles[x][y][z+1] == Tile.FLOOR
+				if (tiles[x][y][z] == Tile.CAVE_FLOOR
+						&& tiles[x][y][z+1] == Tile.CAVE_FLOOR
 						&& regions[x][y][z] == r1 
 						&& regions[x][y][z+1] == r2){
 					candidates.add(new Point(x,y,z));
@@ -183,7 +183,7 @@ public class CaveBuilder {
 			x = (int)(Math.random() * width);
 			y = (int)(Math.random() * height);
 		}
-		while (tiles[x][y][0] != Tile.FLOOR);
+		while (tiles[x][y][0] != Tile.CAVE_FLOOR);
 		
 		tiles[x][y][0] = Tile.STAIRS_UP;
 		return this;

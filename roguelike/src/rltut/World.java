@@ -5,6 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class World {
+	
+	public static enum WorldType {
+		DUNGEON,
+		CAVES,
+		UNKNOWN
+	}
+	
 	private Tile[][][] tiles;
 	private Item[][][] items;
 	
@@ -67,7 +74,7 @@ public class World {
 
 	public void dig(int x, int y, int z) {
 		if (tile(x, y, z).isDiggable())
-			tiles[x][y][z] = Tile.FLOOR;
+			tiles[x][y][z] = Tile.CAVE_FLOOR;
 	}
 	
 	public void addAtEmptyLocation(Creature creature, int z){

@@ -8,7 +8,7 @@ public class HelpScreen implements Screen {
 	@Override
 	public void displayOutput(AsciiPanel terminal) {
 		terminal.clear();
-		terminal.writeCenter("roguelike help", 1);
+		terminal.writeCenter("BADOM help", 1);
 		terminal.write("Descend the Caves Of Slight Danger, find the lost Teddy Bear, and return to", 1, 3);
 		terminal.write("the surface to win. Use what you find to avoid dying.", 1, 4);
 		
@@ -23,6 +23,7 @@ public class HelpScreen implements Screen {
 		terminal.write("[t] to throw an item", 2, y++);
 		terminal.write("[q] to quaff a potion", 2, y++);
 		terminal.write("[r] to read something", 2, y++);
+		terminal.write("[ESC] to quit game", 2, y++);
 		
 		terminal.writeCenter("-- press any key to continue --", 22);
 	}

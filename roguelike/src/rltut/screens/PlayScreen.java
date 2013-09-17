@@ -4,16 +4,16 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
-
 import asciiPanel.AsciiPanel;
 import rltut.Creature;
 import rltut.DungeonBuilder;
+import rltut.CaveBuilder;
 import rltut.Item;
 import rltut.StuffFactory;
 import rltut.FieldOfView;
 import rltut.Tile;
 import rltut.World;
-import rltut.CaveBuilder;
+import rltut.World.WorldType;
 
 public class PlayScreen implements Screen {
 	private World world;
@@ -24,11 +24,11 @@ public class PlayScreen implements Screen {
 	private FieldOfView fov;
 	private Screen subscreen;
 	
-	public PlayScreen(){
+	public PlayScreen(WorldType type){
 		screenWidth = 80;
 		screenHeight = 23;
 		messages = new ArrayList<String>();
-		createWorld();
+		createWorld(type);
 		fov = new FieldOfView(world);
 		
 		StuffFactory factory = new StuffFactory(world);
@@ -74,9 +74,20 @@ public class PlayScreen implements Screen {
 		factory.newVictoryItem(world.depth() - 1);
 	}
 	
-	private void createWorld(){
-//		world = new CaveBuilder(90, 32, 5).makeCaves().build();
-		world = new DungeonBuilder(90, 32, 5).makeDungeon().build();
+	private void createWorld(WorldType type){
+		
+		switch (type) {
+		case DUNGEON:
+			world = new DungeonBuilder(90, 32, 5).makeDungeon().build();
+			break;
+		case CAVES:
+			world = new CaveBuilder(90, 32, 5).makeCaves().build();
+			break;
+		case UNKNOWN:
+			break;
+		default:
+			break;
+		}
 	}
 	
 	public int getScrollX() { return Math.max(0, Math.min(player.x - screenWidth / 2, world.width() - screenWidth)); }
@@ -144,6 +155,8 @@ public class PlayScreen implements Screen {
 			subscreen = subscreen.respondToUserInput(key);
 		} else {
 			switch (key.getKeyCode()){
+			case KeyEvent.VK_ESCAPE:
+				return new StartScreen();
 			case KeyEvent.VK_LEFT:
 			case KeyEvent.VK_H: player.moveBy(-1, 0, 0); break;
 			case KeyEvent.VK_RIGHT:
