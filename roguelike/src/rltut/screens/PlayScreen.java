@@ -157,17 +157,25 @@ public class PlayScreen implements Screen {
 			switch (key.getKeyCode()){
 			case KeyEvent.VK_ESCAPE:
 				return new StartScreen();
+			case KeyEvent.VK_NUMPAD4:
 			case KeyEvent.VK_LEFT:
 			case KeyEvent.VK_H: player.moveBy(-1, 0, 0); break;
+			case KeyEvent.VK_NUMPAD6:
 			case KeyEvent.VK_RIGHT:
 			case KeyEvent.VK_L: player.moveBy( 1, 0, 0); break;
+			case KeyEvent.VK_NUMPAD8:
 			case KeyEvent.VK_UP:
 			case KeyEvent.VK_K: player.moveBy( 0,-1, 0); break;
+			case KeyEvent.VK_NUMPAD2:
 			case KeyEvent.VK_DOWN:
 			case KeyEvent.VK_J: player.moveBy( 0, 1, 0); break;
+			case KeyEvent.VK_NUMPAD7:
 			case KeyEvent.VK_Y: player.moveBy(-1,-1, 0); break;
+			case KeyEvent.VK_NUMPAD9:
 			case KeyEvent.VK_U: player.moveBy( 1,-1, 0); break;
+			case KeyEvent.VK_NUMPAD1:
 			case KeyEvent.VK_B: player.moveBy(-1, 1, 0); break;
+			case KeyEvent.VK_NUMPAD3:
 			case KeyEvent.VK_N: player.moveBy( 1, 1, 0); break;
 			case KeyEvent.VK_D: subscreen = new DropScreen(player); break;
 			case KeyEvent.VK_E: subscreen = new EatScreen(player); break;
