@@ -3,7 +3,6 @@ package rltut.screens;
 import java.awt.event.KeyEvent;
 
 import rltut.World.WorldType;
-
 import asciiPanel.AsciiPanel;
 
 public class StartScreen implements Screen {
@@ -32,5 +31,10 @@ public class StartScreen implements Screen {
 		}
 		
 		return new PlayScreen(type);
+	}
+
+	@Override
+	public Screen respondToMouseMove(int x, int y) {
+		return this;
 	}
 }

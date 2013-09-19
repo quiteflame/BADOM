@@ -6,7 +6,6 @@ import java.awt.event.KeyListener;
 
 import rltut.screens.Screen;
 import rltut.screens.StartScreen;
-
 import asciiPanel.AsciiPanel;
 
 public class AppletMain extends Applet implements KeyListener {

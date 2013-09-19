@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import rltut.Creature;
 import rltut.Item;
 import rltut.Spell;
-
 import asciiPanel.AsciiPanel;
 
 public class ReadSpellScreen implements Screen {
@@ -79,5 +78,10 @@ public class ReadSpellScreen implements Screen {
 		
 		player.castSpell(spell, player.x, player.y);
 		return null;
+	}
+
+	@Override
+	public Screen respondToMouseMove(int x, int y) {
+		return this;
 	}
 }

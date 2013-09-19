@@ -22,8 +22,9 @@ public class LookScreen extends TargetBasedScreen {
 			caption = item.glyph() + " "  + player.nameOf(item) + item.details();
 			return;
 		}
-		
+		System.out.println("x="+x+", y="+y);
 		Tile tile = player.tile(x, y, player.z);
 		caption = tile.glyph() + " " + tile.details();
+		System.out.println(caption);
 	}
 }

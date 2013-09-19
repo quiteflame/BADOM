@@ -2,6 +2,7 @@ package rltut.screens;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+
 import rltut.Creature;
 import rltut.Item;
 import asciiPanel.AsciiPanel;
@@ -74,5 +75,10 @@ public abstract class InventoryBasedScreen implements Screen {
 		} else {
 			return this;
 		}
+	}
+	
+	@Override
+	public Screen respondToMouseMove(int x, int y) {
+		return this;
 	}
 }

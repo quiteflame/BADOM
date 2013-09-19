@@ -1,6 +1,7 @@
 package rltut.screens;
 
 import java.awt.event.KeyEvent;
+
 import asciiPanel.AsciiPanel;
 
 public class HelpScreen implements Screen {
@@ -23,6 +24,7 @@ public class HelpScreen implements Screen {
 		terminal.write("[t] to throw an item", 2, y++);
 		terminal.write("[q] to quaff a potion", 2, y++);
 		terminal.write("[r] to read something", 2, y++);
+		terminal.write("[f] to fire from range weapon", 2, y++);
 		terminal.write("[ESC] to quit game", 2, y++);
 		
 		terminal.writeCenter("-- press any key to continue --", 22);
@@ -30,6 +32,11 @@ public class HelpScreen implements Screen {
 
 	@Override
 	public Screen respondToUserInput(KeyEvent key) {
+		return null;
+	}
+
+	@Override
+	public Screen respondToMouseMove(int x, int y) {
 		return null;
 	}
 }

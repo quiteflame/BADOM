@@ -4,7 +4,6 @@ import java.awt.event.KeyEvent;
 
 import rltut.Creature;
 import rltut.World.WorldType;
-
 import asciiPanel.AsciiPanel;
 
 public class LoseScreen implements Screen {
@@ -38,5 +37,10 @@ public class LoseScreen implements Screen {
 		}
 
 		return new PlayScreen(type);
+	}
+
+	@Override
+	public Screen respondToMouseMove(int x, int y) {
+		return this;
 	}
 }

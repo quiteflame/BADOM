@@ -1,6 +1,7 @@
 package rltut;
 
 import java.awt.Color;
+
 import asciiPanel.AsciiPanel;
 
 public enum Tile {
